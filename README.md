@@ -14,7 +14,7 @@ Please note that you need to handle obtaining the access token securely and prog
 2. Grant necessary permissions: In the Azure portal, navigate to your registered application and grant the required permissions to interact with the Microsoft Graph API. For this script, you'll need to grant the Presence.ReadWrite.All permission to manage presence.
 
 3. Obtain the access token: To obtain the access token programmatically, you'll need to authenticate using the Microsoft Identity platform (formerly Azure AD v2.0). You can use the OAuth 2.0 client credentials grant flow to obtain the token. Here's an example of how you can obtain the access token using the requests library in Python:
-
+```
 import requests
 import json
 
@@ -43,11 +43,13 @@ response = requests.post(
 
 # Parse the response and extract the access token
 access_token = response.json()["access_token"]
+```
 
 Replace <your_client_id>, <your_client_secret>, and <your_tenant_id> with your application's respective values.
 
 4. Obtain the user ID: The user ID represents the user whose presence you want to manage. You can retrieve the user ID programmatically using the Microsoft Graph API. Here's an example of how you can retrieve the user ID using the access token:
 
+```
 # Set the user endpoint URL
 user_url = "https://graph.microsoft.com/v1.0/me"
 
@@ -61,6 +63,7 @@ response = requests.get(user_url, headers=headers)
 
 # Parse the response and extract the user ID
 user_id = response.json()["id"]
+```
 
 Now you have the user ID and access token required to execute the script. Replace <your_user_id> and <your_access_token> in the script with the respective values you obtained.
 
